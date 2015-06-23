@@ -8,10 +8,10 @@ failed_count = 0
 mof_files, options = MOF::Parser.argv_handler 'moflint', ARGV
 options[:style] ||= :wmi
 options[:includes] ||= []
-options[:includes].unshift(Pathname.new('.'), Pathname.new('./cim_schema_2.26.0Final-MOFs'))
+options[:includes].unshift(Pathname.new('.'), Pathname.new('./DSC'), Pathname.new('./cim_schema_2.26.0Final-MOFs'))
 
 parser = MOF::Parser.new(options)
-schemas = Dir.glob(["*.schema.mof"]) # , "ntfs.mof"])
+schemas = Dir.glob(["DSC/*.mof"]) # , "ntfs.mof"])
 extra_schemas = ['MSFT_Qualifiers.mof', 'qualifiers.mof', 'qualifiers_optional.mof', 'cim_schema_2.26.0.mof']
 puts "Discovered #{schemas.count} total schemas to parse\n\n"
 
