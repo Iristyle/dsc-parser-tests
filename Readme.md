@@ -12,3 +12,4 @@
 
 * All DSC resources come from `git clone --recursive https://github.com/PowerShell/DSCResources` .. and then a copy of all MOFs to a flattened hierarchy via `cp DSCResources/**/*.mof`
 * The `cim_schema_2.26.0Final-MOfs` folder came from `git clone https://github.com/msutter/cim_schema_2.26.0Final-MOFs.git`
+

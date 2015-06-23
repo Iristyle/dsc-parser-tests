@@ -11,8 +11,9 @@ options[:includes] ||= []
 options[:includes].unshift(Pathname.new('.'), Pathname.new('./DSC'), Pathname.new('./cim_schema_2.26.0Final-MOFs'))
 
 parser = MOF::Parser.new(options)
-schemas = Dir.glob(["DSC/*.mof"]) # , "ntfs.mof"])
-extra_schemas = ['MSFT_Qualifiers.mof', 'qualifiers.mof', 'qualifiers_optional.mof', 'cim_schema_2.26.0.mof']
+schemas = Dir.glob(["DSC/*.mof", "ntfs.mof"])
+wmi_qualifiers = Gem.find_files_from_load_path('mof.rb').first.sub('mof.rb', 'include/wmi-qualifiers.mof')
+extra_schemas = ['MSFT_Qualifiers.mof', 'qualifiers.mof', wmi_qualifiers, 'qualifiers_optional.mof', 'cim_schema_2.26.0.mof']
 puts "Discovered #{schemas.count} total schemas to parse\n\n"
 
 schemas.each do |file|
